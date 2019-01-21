@@ -1,0 +1,38 @@
+//回归本源，分数化小数，手工怎么算，计算机就怎么算。
+#include<stdio.h>
+int main()
+{
+	int a,b,c,k=1;
+	int integer,d[101];
+	while (1)
+	{
+		scanf("%d%d%d",&a,&b,&c);
+		if (a==0&&b==0&&c==0) break;
+		integer=a/b;
+		a%=b;
+		for (int i=1;i<=c;i++)
+		{
+			d[i]=a*10/b;
+			a=a*10%b;
+		}
+		if (a*10/b>=5)//进位做得很巧妙 
+		{
+			for (int i=c;i>=1;i--)
+			{
+				d[i]+=1;
+				if (d[i]<10) 
+					break;
+				else
+					d[i]%=10;
+			}
+		}
+		printf("Case %d: %d.",k,integer);
+		for (int i=1;i<=c;i++)
+		{
+			printf("%d",d[i]);
+		}
+		printf("\n");
+		k++;
+	}
+	return 0;
+} 
